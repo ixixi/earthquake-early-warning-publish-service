@@ -14,8 +14,11 @@ Using *'DigitalTelopper Subscribe Client'*, **you can watch TV ovarlapping with 
 ## Getting Started
 
 install the language processor
- * [python(2.6 or later)](http://www.python.org/getit/)
+
+* [python(2.6 or later)](http://www.python.org/getit/)
+
 install dependencies
+
  *  [py-amqplib](http://entis-marketing.jp/products/dt/nl1068/index.html)
  *  [tweepy](https://github.com/joshthecoder/tweepy)
  *  [python-daemon](http://pypi.python.org/pypi/python-daemon/)
