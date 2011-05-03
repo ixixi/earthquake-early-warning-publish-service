@@ -7,15 +7,9 @@ Created on 2011/04/30
 '''
 from amqplib import client_0_8 as amqp
 
-userId = 'guest'
-password = 'guest'
-host = 'ec2-175-41-210-68.ap-northeast-1.compute.amazonaws.com'
-
-'''
 userId   = '{fill in RabbitMQ userId }'
 password = '{fill in RabbitMQ password }'
 host     = '{fill in RabbitMQ server}'
-'''
 
 DEFAULT_EXCHANGE = 'fanoutexchange'
 

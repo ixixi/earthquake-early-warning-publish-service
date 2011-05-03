@@ -10,21 +10,12 @@ import re
 import json
 import traceback
 
-'''
 consumer_key    = '{fill in your consumer_key}'
 consumer_secret = '{fill in your consumer_secret}'
 access_key      = '{fill in your access key}'
 access_secret   = '{fill in your access secret}'
 
 my_screen_name = '{fill in your screen name}'
-'''
-
-consumer_key    = 'Zq2J3Y69KyM0r0VSRdRPw'
-consumer_secret = 'bAfS6gOcssKQRbsAwUGsAap79n2VQJ9pxhJ9R74AQ'
-access_key      = '15377475-IqUO2YqokQ1nICFckN0laGkwaogRcrzZqXlbUJQhY'
-access_secret   = 'luKPKWKb2wRaxi0XoItOJ80AE6KNSp1ss4XRw8HA'
-
-my_screen_name = 'ixixi'
 
 level_user_mst = {
                  'eew_jp'          : 'error',
