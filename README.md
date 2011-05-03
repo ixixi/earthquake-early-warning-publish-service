@@ -13,28 +13,31 @@ Using *'DigitalTelopper Subscribe Client'*, **you can watch TV ovarlapping with 
 
 ## Getting Started
 
-install the language processor
+### install
+
+#### install the language processor
 
 * [python(2.6 or later)](http://www.python.org/getit/)
 
-install dependencies
+#### install dependencies
 
  *  [py-amqplib](http://entis-marketing.jp/products/dt/nl1068/index.html)
  *  [tweepy](https://github.com/joshthecoder/tweepy)
  *  [python-daemon](http://pypi.python.org/pypi/python-daemon/)
 
+#### install earthquake-early-warning-publish-service
 
 $ git clone https://github.com/ixixi/earthquake-early-warning-publish-service.git
 
+### configure
+
 $ cd eathquake-early-warning-publish-service
-
 $ vim conf/amqp.conf
-
  - write RabbitMQ connection settings
-
 $ vim conf/twitter.conf
-
  - write your consumer key/secret, access token/secret and screen name.
+
+### run
 
 $ sh twitter_userstream_start.sh
 
