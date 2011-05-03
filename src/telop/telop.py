@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 '''
+push Digital Telopper EN-NL1068
+@see
+http://www.entis-marketing.jp/products/dt/nl1068/index.html
+
 Created on 2011/04/29
 
 @author: ixixi
