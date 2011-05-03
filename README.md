@@ -24,12 +24,18 @@ install dependencies
  *  [python-daemon](http://pypi.python.org/pypi/python-daemon/)
 
 
-    $ git clone https://github.com/ixixi/earthquake-early-warning-publish-service.git
-    $ cd eathquake-early-warning-publish-service
-    $ vim conf/amqp.conf
-     - write RabbitMQ connection settings
-    $ vim conf/twitter.conf
-     - write your consumer key/secret, access token/secret and screen name.
-    $ sh twitter_userstream_start.sh
+$ git clone https://github.com/ixixi/earthquake-early-warning-publish-service.git
+
+$ cd eathquake-early-warning-publish-service
+
+$ vim conf/amqp.conf
+
+ - write RabbitMQ connection settings
+
+$ vim conf/twitter.conf
+
+ - write your consumer key/secret, access token/secret and screen name.
+
+$ sh twitter_userstream_start.sh
 
 
