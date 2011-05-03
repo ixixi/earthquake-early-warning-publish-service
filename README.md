@@ -31,11 +31,11 @@ $ git clone https://github.com/ixixi/earthquake-early-warning-publish-service.gi
 
 ### configure
 
-$ cd eathquake-early-warning-publish-service
-$ vim conf/amqp.conf
- - write RabbitMQ connection settings
-$ vim conf/twitter.conf
- - write your consumer key/secret, access token/secret and screen name.
+$ cd eathquake-early-warning-publish-service  
+$ vim conf/amqp.conf  
+ - write RabbitMQ connection settings  
+$ vim conf/twitter.conf  
+ - write your consumer key/secret, access token/secret and screen name.  
 
 ### run
 
