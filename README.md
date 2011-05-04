@@ -21,7 +21,7 @@ Using *'Digital Telopper Subscribe Client'*, **you can watch TV ovarlapping with
 
 #### install dependencies
 
- *  [py-amqplib](http://entis-marketing.jp/products/dt/nl1068/index.html)
+ *  [py-amqplib](http://code.google.com/p/py-amqplib/)
  *  [tweepy](https://github.com/joshthecoder/tweepy)
  *  [python-daemon](http://pypi.python.org/pypi/python-daemon/)
 
