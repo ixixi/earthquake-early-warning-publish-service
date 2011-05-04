@@ -40,5 +40,3 @@ $ vim conf/twitter.conf
 ### run
 
 $ sh twitter_userstream_start.sh
-
-
