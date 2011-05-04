@@ -6,10 +6,10 @@ To get messages of earthquake-early-warning, eew-pub uses Twitter User Streaming
 So eew-pub achieve Real-time publishing.
 
 If you have *'Degital Telopper EN-NL1068'*, you are lucky.
-Using *'DigitalTelopper Subscribe Client'*, **you can watch TV ovarlapping with Earthquake-Early-Warning telops** (like captions).
+Using *'Digital Telopper Subscribe Client'*, **you can watch TV ovarlapping with Earthquake-Early-Warning telops** (like captions).
 
  * [Degital Telopper EN-NL1068](http://entis-marketing.jp/products/dt/nl1068/index.html)
- * [DigitalTelopper SubScribe Client](https://github.com/ixixi/digitaltelopper-subscribe-client)
+ * [Digital Telopper SubScribe Client](https://github.com/ixixi/digitaltelopper-subscribe-client)
 
 ## Getting Started
 

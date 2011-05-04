@@ -1,33 +1,45 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
- 
+
+import os,sys
 from tweepy import OAuthHandler, Stream, StreamListener, TweepError, API
 from amqp.amqpclient import AMQPClient
 from telopmessage import TelopMessage
+from jsonloader import JSONLoader
 import logging
 import urllib 
 import re
 import json
 import traceback
 
-consumer_key    = '{fill in your consumer_key}'
-consumer_secret = '{fill in your consumer_secret}'
-access_key      = '{fill in your access key}'
-access_secret   = '{fill in your access secret}'
 
-my_screen_name = '{fill in your screen name}'
+CONFIG_DIR = '../conf/'
+CONFIG_TWITTER    = CONFIG_DIR + 'twitter.conf'
+CONFIG_HANDLE_MST = CONFIG_DIR + 'handle_mst.conf'
+CONFIG_AMQP       = CONFIG_DIR + 'amqp.conf'
 
-level_user_mst = {
-                 'eew_jp'          : 'error',
-                 'earthquake_jp'   : 'warn',
-                 my_screen_name    : 'warn',
-                 'other'           : 'info'}
+print 'load twitter conf'
+twitter_conf = JSONLoader.load_json(CONFIG_TWITTER)
 
-level_tweet_mst = {
-                 'timeline'        : 'info',
-                 'mention'         : 'error',
-                 'conversation'    : 'debug',
-                 'retweet'         : 'debug'}
+consumer_key    = twitter_conf['consumer_key'] 
+consumer_secret = twitter_conf['consumer_secret'] 
+access_key      = twitter_conf['access_key']
+access_secret   = twitter_conf['access_secret']
+my_screen_name  = twitter_conf['my_screen_name']
+
+print 'load handle-mst conf'
+handle_mst_conf = JSONLoader.load_json(CONFIG_HANDLE_MST)
+
+level_tweet_mst = handle_mst_conf['level_tweet_mst']
+level_user_mst  = handle_mst_conf['level_user_mst']
+
+print 'load amqp conf'
+amqp_conf     = JSONLoader.load_json(CONFIG_AMQP)
+amqp_userid   = amqp_conf['user_id']
+amqp_password = amqp_conf['password']
+amqp_host     = amqp_conf['host']
+amqp_exchange = amqp_conf['default_exchange']
+
 
 def get_oauth():
      
@@ -54,7 +66,7 @@ class UserStream(Stream):
  
 class CustomeStreamListener(StreamListener):
     
-    __amqp_client = AMQPClient()
+    __amqp_client = None
     __raw_data = None
     __json_data = None
     
@@ -100,6 +112,8 @@ class CustomeStreamListener(StreamListener):
             
             message_body = self.build_message_body(status)
             
+            level = level.encode('utf-8')
+
             print '[%s] (%s) : %s' % (level,data_type,message_body)
 
             telop_message = TelopMessage(message_body=message_body,data_type=data_type,level=level,raw_json=self.__raw_data)
@@ -116,7 +130,9 @@ class CustomeStreamListener(StreamListener):
             # TODO:favとかretweetedとかfollowの通知上げるか?
             print status
             
-            
+    def set_amqp_client(self,amqp_client):
+        self.__amqp_client = amqp_client
+
     def build_message_body(self,status):
         raw_text = status.text
         screen_name = status.user.screen_name
@@ -140,13 +156,16 @@ class CustomeStreamListener(StreamListener):
 
 def main():
     auth = get_oauth()
-    stream = UserStream(auth, CustomeStreamListener(api=API(auth_handler=auth)))
+    amqp_client = AMQPClient(amqp_host,amqp_userid,amqp_password,amqp_exchange)
+    csl = CustomeStreamListener(api=API(auth_handler=auth))
+    csl.set_amqp_client(amqp_client)
+    stream = UserStream(auth,csl)
     stream.timeout = None
     stream.user_stream()
 
         
 if __name__ == '__main__':
-	main()
+    main()
 
 def daemon_process():
     print 'daemon start!'

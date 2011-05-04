@@ -6,12 +6,13 @@ Created on 2011/04/30
 @author: ixixi
 '''
 from amqplib import client_0_8 as amqp
-
+'''
 userId   = '{fill in RabbitMQ userId }'
 password = '{fill in RabbitMQ password }'
 host     = '{fill in RabbitMQ server}'
 
 DEFAULT_EXCHANGE = 'fanoutexchange'
+'''
 
 class AMQPClient:
     
@@ -19,8 +20,8 @@ class AMQPClient:
     channel = None
     exchange = None
     
-    def __init__(self,exchange=DEFAULT_EXCHANGE):
-        self.connection = amqp.Connection(host, userid=userId, password=password, ssl=False)
+    def __init__(self,host,userid,password,exchange):
+        self.connection = amqp.Connection(host, userid=userid, password=password, ssl=False)
         self.channel = self.connection.channel()
         self.channel.access_request('/data', active=True, write=True)
         self.channel.exchange_declare(exchange, 'fanout', auto_delete=True)
