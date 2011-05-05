@@ -1,8 +1,8 @@
 Earthquake-Early-Warning publish service (eew-pub)
 ===========
 
-This service(eew-pub) publish messages of earthquake-early-waning to a RabbitMQ exchange.
-To get messages of earthquake-early-warning, eew-pub uses Twitter User Streaming API.
+This service(eew-pub) publishes messages of earthquake-early-waning to a RabbitMQ exchange.
+To get messages of earthquake-early-warning, eew-pub uses Twitter User Streaming API (@eew_jp).
 So eew-pub achieve Real-time publishing.
 
 If you have *'Degital Telopper EN-NL1068'*, you are lucky.
